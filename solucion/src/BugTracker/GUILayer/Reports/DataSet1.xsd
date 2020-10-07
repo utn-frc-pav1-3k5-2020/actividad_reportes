@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=.\SQLEXPRESS;Initial Catalog=BugTracker;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="msi\sqlexpress.BugTracker.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BugsTableAdapter" GeneratorDataComponentClassName="BugsTableAdapter" Name="Bugs" UserDataComponentName="BugsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="msi\sqlexpress.BugTracker.dbo" DbObjectName="BugTracker.dbo.Bugs" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Bugs.*
+FROM            Bugs INNER JOIN
+                         Estados ON Bugs.id_estado = Estados.id_estado INNER JOIN
+                         Productos ON Bugs.id_producto = Productos.id_producto</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_bug" DataSetColumn="id_bug" />
+              <Mapping SourceColumn="titulo" DataSetColumn="titulo" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="fecha_alta" DataSetColumn="fecha_alta" />
+              <Mapping SourceColumn="id_usuario_responsable" DataSetColumn="id_usuario_responsable" />
+              <Mapping SourceColumn="id_usuario_asignado" DataSetColumn="id_usuario_asignado" />
+              <Mapping SourceColumn="id_producto" DataSetColumn="id_producto" />
+              <Mapping SourceColumn="id_prioridad" DataSetColumn="id_prioridad" />
+              <Mapping SourceColumn="id_criticidad" DataSetColumn="id_criticidad" />
+              <Mapping SourceColumn="id_estado" DataSetColumn="id_estado" />
+              <Mapping SourceColumn="borrado" DataSetColumn="borrado" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Bugs" msprop:Generator_TableClassName="BugsDataTable" msprop:Generator_TableVarName="tableBugs" msprop:Generator_TablePropName="Bugs" msprop:Generator_RowDeletingName="BugsRowDeleting" msprop:Generator_RowChangingName="BugsRowChanging" msprop:Generator_RowEvHandlerName="BugsRowChangeEventHandler" msprop:Generator_RowDeletedName="BugsRowDeleted" msprop:Generator_UserTableName="Bugs" msprop:Generator_RowChangedName="BugsRowChanged" msprop:Generator_RowEvArgName="BugsRowChangeEvent" msprop:Generator_RowClassName="BugsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_bug" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_bug" msprop:Generator_ColumnPropNameInRow="id_bug" msprop:Generator_ColumnPropNameInTable="id_bugColumn" msprop:Generator_UserColumnName="id_bug" type="xs:int" />
+              <xs:element name="titulo" msprop:Generator_ColumnVarNameInTable="columntitulo" msprop:Generator_ColumnPropNameInRow="titulo" msprop:Generator_ColumnPropNameInTable="tituloColumn" msprop:Generator_UserColumnName="titulo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fecha_alta" msprop:Generator_ColumnVarNameInTable="columnfecha_alta" msprop:Generator_ColumnPropNameInRow="fecha_alta" msprop:Generator_ColumnPropNameInTable="fecha_altaColumn" msprop:Generator_UserColumnName="fecha_alta" type="xs:dateTime" />
+              <xs:element name="id_usuario_responsable" msprop:Generator_ColumnVarNameInTable="columnid_usuario_responsable" msprop:Generator_ColumnPropNameInRow="id_usuario_responsable" msprop:Generator_ColumnPropNameInTable="id_usuario_responsableColumn" msprop:Generator_UserColumnName="id_usuario_responsable" type="xs:int" minOccurs="0" />
+              <xs:element name="id_usuario_asignado" msprop:Generator_ColumnVarNameInTable="columnid_usuario_asignado" msprop:Generator_ColumnPropNameInRow="id_usuario_asignado" msprop:Generator_ColumnPropNameInTable="id_usuario_asignadoColumn" msprop:Generator_UserColumnName="id_usuario_asignado" type="xs:int" minOccurs="0" />
+              <xs:element name="id_producto" msprop:Generator_ColumnVarNameInTable="columnid_producto" msprop:Generator_ColumnPropNameInRow="id_producto" msprop:Generator_ColumnPropNameInTable="id_productoColumn" msprop:Generator_UserColumnName="id_producto" type="xs:int" minOccurs="0" />
+              <xs:element name="id_prioridad" msprop:Generator_ColumnVarNameInTable="columnid_prioridad" msprop:Generator_ColumnPropNameInRow="id_prioridad" msprop:Generator_ColumnPropNameInTable="id_prioridadColumn" msprop:Generator_UserColumnName="id_prioridad" type="xs:int" minOccurs="0" />
+              <xs:element name="id_criticidad" msprop:Generator_ColumnVarNameInTable="columnid_criticidad" msprop:Generator_ColumnPropNameInRow="id_criticidad" msprop:Generator_ColumnPropNameInTable="id_criticidadColumn" msprop:Generator_UserColumnName="id_criticidad" type="xs:int" minOccurs="0" />
+              <xs:element name="id_estado" msprop:Generator_ColumnVarNameInTable="columnid_estado" msprop:Generator_ColumnPropNameInRow="id_estado" msprop:Generator_ColumnPropNameInTable="id_estadoColumn" msprop:Generator_UserColumnName="id_estado" type="xs:int" />
+              <xs:element name="borrado" msprop:Generator_ColumnVarNameInTable="columnborrado" msprop:Generator_ColumnPropNameInRow="borrado" msprop:Generator_ColumnPropNameInTable="borradoColumn" msprop:Generator_UserColumnName="borrado" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Bugs" />
+      <xs:field xpath="mstns:id_bug" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
