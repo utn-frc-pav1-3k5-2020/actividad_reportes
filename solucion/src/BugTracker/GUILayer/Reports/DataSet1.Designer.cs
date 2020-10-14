@@ -301,6 +301,10 @@ namespace BugTracker.GUILayer.Reports {
             
             private global::System.Data.DataColumn columnborrado;
             
+            private global::System.Data.DataColumn columnestado;
+            
+            private global::System.Data.DataColumn columnproducto;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BugsDataTable() {
@@ -424,6 +428,22 @@ namespace BugTracker.GUILayer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn estadoColumn {
+                get {
+                    return this.columnestado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn productoColumn {
+                get {
+                    return this.columnproducto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +479,7 @@ namespace BugTracker.GUILayer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public BugsRow AddBugsRow(string titulo, string descripcion, System.DateTime fecha_alta, int id_usuario_responsable, int id_usuario_asignado, int id_producto, int id_prioridad, int id_criticidad, int id_estado, bool borrado) {
+            public BugsRow AddBugsRow(string titulo, string descripcion, System.DateTime fecha_alta, int id_usuario_responsable, int id_usuario_asignado, int id_producto, int id_prioridad, int id_criticidad, int id_estado, bool borrado, string estado, string producto) {
                 BugsRow rowBugsRow = ((BugsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -472,7 +492,9 @@ namespace BugTracker.GUILayer.Reports {
                         id_prioridad,
                         id_criticidad,
                         id_estado,
-                        borrado};
+                        borrado,
+                        estado,
+                        producto};
                 rowBugsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBugsRow);
                 return rowBugsRow;
@@ -513,6 +535,8 @@ namespace BugTracker.GUILayer.Reports {
                 this.columnid_criticidad = base.Columns["id_criticidad"];
                 this.columnid_estado = base.Columns["id_estado"];
                 this.columnborrado = base.Columns["borrado"];
+                this.columnestado = base.Columns["estado"];
+                this.columnproducto = base.Columns["producto"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -540,6 +564,10 @@ namespace BugTracker.GUILayer.Reports {
                 base.Columns.Add(this.columnid_estado);
                 this.columnborrado = new global::System.Data.DataColumn("borrado", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnborrado);
+                this.columnestado = new global::System.Data.DataColumn("estado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnestado);
+                this.columnproducto = new global::System.Data.DataColumn("producto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproducto);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid_bug}, true));
                 this.columnid_bug.AutoIncrement = true;
@@ -554,6 +582,9 @@ namespace BugTracker.GUILayer.Reports {
                 this.columnfecha_alta.AllowDBNull = false;
                 this.columnid_estado.AllowDBNull = false;
                 this.columnborrado.AllowDBNull = false;
+                this.columnestado.AllowDBNull = false;
+                this.columnestado.MaxLength = 50;
+                this.columnproducto.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -847,6 +878,33 @@ namespace BugTracker.GUILayer.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string estado {
+                get {
+                    return ((string)(this[this.tableBugs.estadoColumn]));
+                }
+                set {
+                    this[this.tableBugs.estadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string producto {
+                get {
+                    try {
+                        return ((string)(this[this.tableBugs.productoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'producto\' de la tabla \'Bugs\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBugs.productoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsdescripcionNull() {
                 return this.IsNull(this.tableBugs.descripcionColumn);
             }
@@ -915,6 +973,18 @@ namespace BugTracker.GUILayer.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setid_criticidadNull() {
                 this[this.tableBugs.id_criticidadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsproductoNull() {
+                return this.IsNull(this.tableBugs.productoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetproductoNull() {
+                this[this.tableBugs.productoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1088,6 +1158,8 @@ namespace BugTracker.GUILayer.Reports.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("id_criticidad", "id_criticidad");
             tableMapping.ColumnMappings.Add("id_estado", "id_estado");
             tableMapping.ColumnMappings.Add("borrado", "borrado");
+            tableMapping.ColumnMappings.Add("estado", "estado");
+            tableMapping.ColumnMappings.Add("producto", "producto");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1104,9 +1176,10 @@ namespace BugTracker.GUILayer.Reports.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Bugs.*\r\nFROM            Bugs INNER JOIN\r\n                         E" +
-                "stados ON Bugs.id_estado = Estados.id_estado INNER JOIN\r\n                       " +
-                "  Productos ON Bugs.id_producto = Productos.id_producto";
+            this._commandCollection[0].CommandText = @"SELECT        Bugs.*, Estados.nombre as estado, Productos.nombre as producto
+FROM            Bugs INNER JOIN
+                         Estados ON Bugs.id_estado = Estados.id_estado INNER JOIN
+                         Productos ON Bugs.id_producto = Productos.id_producto";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -9,10 +9,10 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BugsTableAdapter" GeneratorDataComponentClassName="BugsTableAdapter" Name="Bugs" UserDataComponentName="BugsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="msi\sqlexpress.BugTracker.dbo" DbObjectName="BugTracker.dbo.Bugs" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="msi\sqlexpress.BugTracker.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Bugs.*
+                    <CommandText>SELECT        Bugs.*, Estados.nombre as estado, Productos.nombre as producto
 FROM            Bugs INNER JOIN
                          Estados ON Bugs.id_estado = Estados.id_estado INNER JOIN
                          Productos ON Bugs.id_producto = Productos.id_producto</CommandText>
@@ -33,6 +33,8 @@ FROM            Bugs INNER JOIN
               <Mapping SourceColumn="id_criticidad" DataSetColumn="id_criticidad" />
               <Mapping SourceColumn="id_estado" DataSetColumn="id_estado" />
               <Mapping SourceColumn="borrado" DataSetColumn="borrado" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+              <Mapping SourceColumn="producto" DataSetColumn="producto" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -44,7 +46,7 @@ FROM            Bugs INNER JOIN
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Bugs" msprop:Generator_TableClassName="BugsDataTable" msprop:Generator_TableVarName="tableBugs" msprop:Generator_TablePropName="Bugs" msprop:Generator_RowDeletingName="BugsRowDeleting" msprop:Generator_RowChangingName="BugsRowChanging" msprop:Generator_RowEvHandlerName="BugsRowChangeEventHandler" msprop:Generator_RowDeletedName="BugsRowDeleted" msprop:Generator_UserTableName="Bugs" msprop:Generator_RowChangedName="BugsRowChanged" msprop:Generator_RowEvArgName="BugsRowChangeEvent" msprop:Generator_RowClassName="BugsRow">
+        <xs:element name="Bugs" msprop:Generator_TableClassName="BugsDataTable" msprop:Generator_TableVarName="tableBugs" msprop:Generator_RowChangedName="BugsRowChanged" msprop:Generator_TablePropName="Bugs" msprop:Generator_RowDeletingName="BugsRowDeleting" msprop:Generator_RowChangingName="BugsRowChanging" msprop:Generator_RowEvHandlerName="BugsRowChangeEventHandler" msprop:Generator_RowDeletedName="BugsRowDeleted" msprop:Generator_RowClassName="BugsRow" msprop:Generator_UserTableName="Bugs" msprop:Generator_RowEvArgName="BugsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id_bug" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid_bug" msprop:Generator_ColumnPropNameInRow="id_bug" msprop:Generator_ColumnPropNameInTable="id_bugColumn" msprop:Generator_UserColumnName="id_bug" type="xs:int" />
@@ -70,6 +72,20 @@ FROM            Bugs INNER JOIN
               <xs:element name="id_criticidad" msprop:Generator_ColumnVarNameInTable="columnid_criticidad" msprop:Generator_ColumnPropNameInRow="id_criticidad" msprop:Generator_ColumnPropNameInTable="id_criticidadColumn" msprop:Generator_UserColumnName="id_criticidad" type="xs:int" minOccurs="0" />
               <xs:element name="id_estado" msprop:Generator_ColumnVarNameInTable="columnid_estado" msprop:Generator_ColumnPropNameInRow="id_estado" msprop:Generator_ColumnPropNameInTable="id_estadoColumn" msprop:Generator_UserColumnName="id_estado" type="xs:int" />
               <xs:element name="borrado" msprop:Generator_ColumnVarNameInTable="columnborrado" msprop:Generator_ColumnPropNameInRow="borrado" msprop:Generator_ColumnPropNameInTable="borradoColumn" msprop:Generator_UserColumnName="borrado" type="xs:boolean" />
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="producto" msprop:Generator_ColumnVarNameInTable="columnproducto" msprop:Generator_ColumnPropNameInRow="producto" msprop:Generator_ColumnPropNameInTable="productoColumn" msprop:Generator_UserColumnName="producto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
